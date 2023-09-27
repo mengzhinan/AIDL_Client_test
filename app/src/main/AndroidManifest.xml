@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- 使用 自定义权限 -->
-    <uses-permission android:name="com.fffffff.aidlserver.permission.MyService" />
+    <uses-permission android:name="com.fffffff.aidlserver.permission.MY_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -29,7 +29,7 @@
 
     <queries>
         <!-- 定义某个 app 的整个包可见 -->
-        <!-- <package android:name="com.fffffff.aidl_server_test" /> -->
+         <package android:name="com.fffffff.aidl_server_test" />
 
         <!-- 定义某个 app 的某个 action 可见 -->
         <intent>
