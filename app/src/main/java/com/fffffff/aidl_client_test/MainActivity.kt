@@ -2,12 +2,14 @@ package com.fffffff.aidl_client_test
 
 import android.content.ComponentName
 import android.content.ServiceConnection
+import android.os.Binder
 import android.os.Bundle
 import android.os.IBinder
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.fffffff.aidllib.IMyTestAidlInterface
 import com.fffffff.aidllib.IMyTestCallback
+import com.fffffff.aidllib.MyCallback
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,17 +35,11 @@ class MainActivity : AppCompatActivity() {
 
             iMyTestAidlInterface = IMyTestAidlInterface.Stub.asInterface(service)
 
-            iMyTestAidlInterface?.searchKeyWord(404, "wuhan", object : IMyTestCallback {
-                override fun asBinder(): IBinder? {
-                    return null
-                }
+            iMyTestAidlInterface?.searchKeyWord(404, "wuhan", object : MyCallback() {
 
-                override fun onResult(p0: String?) {
-                    tvShow.text = p0
-                }
-
-                override fun onFailure(p0: String?) {
-                    tvShow.text = p0
+                override fun onResult(data: String?) {
+                    super.onResult(data)
+                    tvShow.text = data?:"null 了"
                 }
 
             })
