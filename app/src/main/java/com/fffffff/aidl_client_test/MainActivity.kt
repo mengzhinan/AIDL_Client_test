@@ -20,10 +20,12 @@ class MainActivity : AppCompatActivity() {
         tvShow = findViewById(R.id.tv_show)
 
         tvShow.setOnClickListener {
+            // 点击 TextView 绑定服务
             BindServerUtil.bindService1(this, connection)
         }
     }
 
+    // 服务绑定成功的回调
     private val connection: ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
 
