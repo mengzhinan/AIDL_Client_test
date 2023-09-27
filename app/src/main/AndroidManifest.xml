@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 使用 自定义权限 -->
+    <uses-permission android:name="com.fffffff.aidlserver.permission.MyService" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AIDL_Client_test"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+
+    <queries>
+        <!-- 定义某个 app 的整个包可见 -->
+        <!-- <package android:name="com.fffffff.aidl_server_test" /> -->
+
+        <!-- 定义某个 app 的某个 action 可见 -->
+        <intent>
+            <action android:name="com.fffffff.aidlserver.MY_SERVICE_CENTER" />
+        </intent>
+    </queries>
+
+
+</manifest>
