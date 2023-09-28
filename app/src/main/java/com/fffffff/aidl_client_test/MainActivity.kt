@@ -34,7 +34,9 @@ class MainActivity : AppCompatActivity() {
             tvShow.text = "连接成功"
             try {
                 iMyTestAidlInterface = IMyTestAidlInterface.Stub.asInterface(service)
-                iMyTestAidlInterface?.searchKeyWord(404, "wuhan", createBinderCallback())
+
+                val callback = createBinderCallback()
+                iMyTestAidlInterface?.searchKeyWord(404, "wuhan", callback)
             } catch (e: Exception) {
                 tvShow.text = "连接失败 error = ${e.message}"
                 e.printStackTrace()
