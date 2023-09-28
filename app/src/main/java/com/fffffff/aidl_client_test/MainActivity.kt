@@ -2,13 +2,11 @@ package com.fffffff.aidl_client_test
 
 import android.content.ComponentName
 import android.content.ServiceConnection
-import android.os.Binder
 import android.os.Bundle
 import android.os.IBinder
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.fffffff.aidllib.IMyTestAidlInterface
-import com.fffffff.aidllib.IMyTestCallback
 import com.fffffff.aidllib.MyCallback
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +21,9 @@ class MainActivity : AppCompatActivity() {
 
         tvShow.setOnClickListener {
             // 点击 TextView 绑定服务
-            BindServerUtil.bindService1(this, connection)
+            val intent = BindServerUtil.buildIntent1(this, connection)
+            BindServerUtil.startService(this, intent)
+            BindServerUtil.bindService(this, intent, connection)
         }
     }
 
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onResult(data: String?) {
                     super.onResult(data)
-                    tvShow.text = data?:"null 了"
+                    tvShow.text = data ?: "null 了"
                 }
 
             })
