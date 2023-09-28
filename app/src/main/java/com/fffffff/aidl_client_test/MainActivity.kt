@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun createBinderCallback(): IMyTestCallback.Stub {
         return object : IMyTestCallback.Stub() {
-            override fun onResult(p0: Boolean, p1: UserData?) {
-                tvShow.text = "获取成功：\n" + "百分比 = ${p1?.percentage}\n" + "内容 = ${p1?.msg}"
+            override fun onResult(p0: String, p1: UserData?) {
+                tvShow.text = "$p0：\n" + "UserData = $p1\nint = ${p1?.percentage}\nmsg = ${p1?.msg}"
             }
 
 
