@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         tvShow.setOnClickListener {
             // 点击 TextView 绑定服务
             val intent = BindServerUtil.buildIntent1(this, connection)
-            BindServerUtil.startService(this, intent)
             BindServerUtil.bindService(this, intent, connection)
         }
     }
