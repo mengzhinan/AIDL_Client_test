@@ -21,8 +21,9 @@ class MainActivity : AppCompatActivity() {
         tvShow = findViewById(R.id.tv_show)
 
         tvShow.setOnClickListener {
+            tvShow.isClickable = false
             // 点击 TextView 绑定服务
-            val intent = BindServerUtil.buildIntent3()
+            val intent = BindServerUtil.buildIntent1()
             BindServerUtil.bindService(this, intent, connection)
         }
     }
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             tvShow.text = "连接成功"
             try {
                 iMyTestAidlInterface = IMyTestAidlInterface.Stub.asInterface(service)
-                iMyTestAidlInterface?.searchKeyWord(404, "wuhan", iMyTestCallbackSub)
+                iMyTestAidlInterface?.searchKeyWord(404, "wuhan", createBinderCallback())
             } catch (e: Exception) {
                 tvShow.text = "连接失败 error = ${e.message}"
                 e.printStackTrace()
@@ -46,17 +47,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private val iMyTestCallbackSub = object : IMyTestCallback.Stub() {
-        override fun onResult(p0: Boolean, p1: UserData?) {
-            tvShow.text = "获取成功：\n" +
-                    "百分比 = ${p1?.percentage}\n" +
-                    "内容 = ${p1?.msg}"
+    private fun createBinderCallback(): IMyTestCallback.Stub {
+        return object : IMyTestCallback.Stub() {
+            override fun onResult(p0: Boolean, p1: UserData?) {
+                tvShow.text = "获取成功：\n" + "百分比 = ${p1?.percentage}\n" + "内容 = ${p1?.msg}"
+            }
+
+
+            override fun onFailure(p0: String?) {
+                tvShow.text = "获取失败 = $p0"
+            }
+
         }
-
-
-        override fun onFailure(p0: String?) {
-            tvShow.text = "获取失败 = $p0"
-        }
-
     }
 }
