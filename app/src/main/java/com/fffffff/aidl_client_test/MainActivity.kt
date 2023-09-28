@@ -31,8 +31,13 @@ class MainActivity : AppCompatActivity() {
     private val connection: ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             tvShow.text = "连接成功"
-            iMyTestAidlInterface = IMyTestAidlInterface.Stub.asInterface(service)
-            iMyTestAidlInterface?.searchKeyWord(404, "wuhan", iMyTestCallbackSub)
+            try {
+                iMyTestAidlInterface = IMyTestAidlInterface.Stub.asInterface(service)
+                iMyTestAidlInterface?.searchKeyWord(404, "wuhan", iMyTestCallbackSub)
+            } catch (e: Exception) {
+                tvShow.text = "连接失败 error = ${e.message}"
+                e.printStackTrace()
+            }
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
