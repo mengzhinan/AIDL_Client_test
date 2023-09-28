@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * 客户端的回调接口需要 new IMyTestCallback.Stub 的实现类，
+     * 而不是 new IMyTestCallback 的实现类。
+     */
     private fun createBinderCallback(): IMyTestCallback.Stub {
         return object : IMyTestCallback.Stub() {
             override fun onResult(p0: String, p1: UserData?) {
