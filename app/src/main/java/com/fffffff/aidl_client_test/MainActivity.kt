@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         tvShow.setOnClickListener {
             tvShow.isClickable = false
             // 点击 TextView 绑定服务
-            val intent = BindServerUtil.buildIntent1()
+            val intent = BindServerUtil.buildIntent3()
             BindServerUtil.bindService(this, intent, connection)
         }
     }
