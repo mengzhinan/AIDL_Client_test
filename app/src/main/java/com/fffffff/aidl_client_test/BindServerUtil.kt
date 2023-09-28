@@ -25,7 +25,7 @@ object BindServerUtil {
     private const val SERVER_SERVICE_ACTION = "com.fffffff.aidlserver.action.MY_SERVICE_CENTER"
 
     @JvmStatic
-    fun buildIntent1(activity: Activity?, serviceConnection: ServiceConnection): Intent {
+    fun buildIntent1(): Intent {
         val intent = Intent()
         // setComponent() 方式
         intent.component = ComponentName(SERVER_SERVICE_PACKAGE_NAME, SERVER_SERVICE_CLASS_NAME)
@@ -33,7 +33,7 @@ object BindServerUtil {
     }
 
     @JvmStatic
-    fun buildIntent2(activity: Activity?, serviceConnection: ServiceConnection): Intent {
+    fun buildIntent2(): Intent {
         val intent = Intent()
         // setClassName() 方式
         intent.setClassName(SERVER_SERVICE_PACKAGE_NAME, SERVER_SERVICE_CLASS_NAME)
@@ -41,7 +41,7 @@ object BindServerUtil {
     }
 
     @JvmStatic
-    fun buildIntent3(activity: Activity?, serviceConnection: ServiceConnection): Intent {
+    fun buildIntent3(): Intent {
         val intent = Intent()
         // setAction 方式
         intent.action = SERVER_SERVICE_ACTION

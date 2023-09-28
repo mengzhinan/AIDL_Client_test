@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 使用 自定义权限 -->
     <uses-permission android:name="com.fffffff.aidlserver.permission.MY_SERVICE" />
+
+    <queries>
+
+        <!-- 定义某个 app 的整个包可见 -->
+        <package android:name="com.fffffff.aidl_server_test" />
+
+        <!-- 定义某个 app 的某个 action 可见 -->
+        <intent>
+            <action android:name="com.fffffff.aidlserver.MY_SERVICE_CENTER" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -16,6 +26,9 @@
         android:theme="@style/Theme.AIDL_Client_test"
         tools:targetApi="31">
         <activity
+            android:name=".JavaActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -25,17 +38,5 @@
             </intent-filter>
         </activity>
     </application>
-
-
-    <queries>
-        <!-- 定义某个 app 的整个包可见 -->
-         <package android:name="com.fffffff.aidl_server_test" />
-
-        <!-- 定义某个 app 的某个 action 可见 -->
-        <intent>
-            <action android:name="com.fffffff.aidlserver.MY_SERVICE_CENTER" />
-        </intent>
-    </queries>
-
 
 </manifest>
