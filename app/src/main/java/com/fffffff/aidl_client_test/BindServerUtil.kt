@@ -51,7 +51,7 @@ object BindServerUtil {
 
     @JvmStatic
     fun bindService(activity: Activity?, intent: Intent, serviceConnection: ServiceConnection) {
-        activity?.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+        activity?.applicationContext?.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
     }
 
     @JvmStatic
